@@ -1,0 +1,8 @@
+flask-restful
+redis
+requests
+requests_oauthlib
+simplejson
+pybloom_live
+schedule
+pyopenssl

@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+
+  web0:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+    - backend
+    environment:
+    - OPENSSL_CONF=/app/example.cnf
+
+networks:
+    backend:
+      driver: bridge

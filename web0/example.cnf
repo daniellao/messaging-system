@@ -1,0 +1,55 @@
+ [ ca ]
+ default_ca      = CA_default            
+
+ [ CA_default ]
+
+ dir            = ./demoCA              
+ database       = $dir/index.txt        
+ new_certs_dir  = $dir/certs            
+
+ certificate    = $dir/cacert.pem       
+ serial         = $dir/serial           
+ #rand_serial    = yes                  
+ private_key    = $dir/private/cakey.pem
+ RANDFILE       = $dir/private/.rand    
+
+ default_days   = 365                   
+ default_crl_days= 7                   
+ default_md     = md5                   
+
+ policy         = policy_any            
+ x509_extensions= certificate_extensions                  
+
+ [ policy_any ]
+ countryName            = supplied
+ stateOrProvinceName    = optional
+ organizationName       = optional
+ organizationalUnitName = optional
+ commonName             = supplied
+ emailAddress           = optional
+
+
+ [certificate_extensions]
+ basicConstraints = CA:false
+
+ [ req ]
+ default_bits           = 2048
+ default_keyfile        = /demoCA/private/cakey.pem
+ distinguished_name     = req_distinguished_name
+ default_md 		= md5
+
+ prompt			= no
+ req_distinguished_name = root_ca_distinguished_name
+ 
+ x509_extensions 	= root_ca_extensions
+
+ [ root_ca_distinguished_name ]
+ countryName                    = NL
+ commonName                     = Example CA
+ commonName_max                 = 64
+
+ emailAddress                   = ca@example.org
+ organizationName		= Root Certification Authority
+
+ [ root_ca_extensions]
+ basicConstraints = CA: true
